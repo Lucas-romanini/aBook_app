@@ -41,14 +41,30 @@
                     success: function (posts) {
 
                         $.each(posts, function (i, post) {
-                            $myDiv.append("<div data-id=\"" + post.ID + "\"> " + post.Overskrift + "<br/><a href=\"#\" onclick=\"navigate(" + post.Overskrift + ",'Rediger')>Rediger</a><a href=\"#\">Slet</a><div>");
+                            $myDiv.append("<div data-id=\"" + post.ID + "\"> " + post.Overskrift + "<br/><a href=\"Rediger.html\"   onclick=\"navigate(" + post.Overskrift + ",'Rediger')\">Rediger</a><br/><a href=\"#\" onclick =\"Delete(" + post.ID + ",'" + post.Overskrift + "')\">Slet</a><div>");
                         });
                     }
-
                 });
 
             });
 
+            //function Delete(id, navn) {
+
+            //    var result = confirm('Er du siker på at du vil slette' + navn + '?');
+
+            //    if (result) {
+            //        var $item = $("div").find("[data-id='" + id + "']")
+            //        $.ajax({
+            //            type: 'GET',
+            //            url: 'http://localhost:2117/api/Book/Delete' + id,
+            //            success: function () {
+            //                $item.fadeOut(300, function () {
+
+            //                });
+            //            }
+            //        });
+            //    }
+            //}
 
         </script>
     </head>

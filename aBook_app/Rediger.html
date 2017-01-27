@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
@@ -27,12 +27,44 @@
     <script src="js/Main.js"></script>
     <title>Hello World!</title>
     <script>
-        var id = window.localStorage.getItem("ID")
+        $(function () {
+            var id = window.localStorage.getItem("id");
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:2117/api/Book/GetPost/' + id,
+                success: function (post) {
+                    $("#id").val(post.ID);
+                    $("#overskrift").val(post.Overskrift);
+                    $("#tekst").html(post.Tekst);
+                    $("#dato").val(post.Dato);
+                }
+            });
+        });
 
-        alert(ID)
+
+      
+
+        function Opdater() {
+
+        }
+        
     </script>
+
 </head>
 <body>
+    <form onsubmit="return Opdater(), false;">
+        <input type="text" id="overskrift" required />
+        <br />
+        <textarea id="tekst"></textarea>
+        <br />
+        <input type="submit" value="Opdater" />
+        <br />
+        <input type="hidden" id="dato" />
+        <input type="hidden" id="id" />
+    </form>
+
+    <a href="index.html">Gå til forsiden</a>
+
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
